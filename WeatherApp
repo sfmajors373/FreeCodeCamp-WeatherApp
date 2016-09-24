@@ -1,31 +1,87 @@
+var api = api.openweathermap.org/data/2.5/forecast/city?id=26f4ad2459a59636d463a5c5535b46cf&units=imperial 
+
 //and everything must start somewhere...
-function geoFindMe() {
-  var output = document.getElementById("out");
 
 //failpoint 1
-  if (!navigator.geolocation){
-    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    return;
-  }
+  
+if (!navigator.geolocation){
+    
+output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    
+return;
+  
+}
+
+
 
 //getting georeferences
-  function success(position) {
+  
+function success(position) {
+
     var lat = position.coords.latitude;
+
     var lon = position.coords.longitude;
 
-//api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}
+    var geoAPI = api +"&lat=" + lat + "&lon="+lon;
+}
 
-//I need some way to call the api for it to give me the json
-var data = new weatherData ();
-data.src = "api.openweathermap.org/data/2.5/weather?lat={" +lat+ "}&lon={"+lon+ "}=imperial";
 
-//display all pertinent info in well somehow (use city name, country code)
 
-//find out how to change display based on weather, use weather.id 
+//call the api for it to give me the json and display all pertinent info somehow (use city name, country code) 
+&.getJSON(geoAPI, function(data) {
+  city = json.name;
+    $("#city").html(city)
+  temperature = json.main.temp;
+    $("#temp").html(temperature + "F") ////going to need a degree sign here
+  weatherId = json.weather[0].id;
 
-//end this function at some point in time...
+}
+
+
+
+//find out how to change display based on weather, use weather.id (https://halgatewood.com/docs/plugins/awesome-weather-widget/creating-different-backgrounds-for-different-weather)?(http://openweathermap.org/weather-conditions)(http://openweathermap.org/img/w/10d.png  put the appropriate icon png at the end)
+
+ switch(weatherId){
+     case setRange(weatherId,200,299):
+         $(".icon").html("<img src="http://openweathermap.org/img/w/11d.png">");
+         break;
+       case setRange(weatherId,300,599):
+         $(".icon").html("<img src="http://openweathermap.org/img/w/10d.png">");
+         break;
+       case setRange(weatherId,800,800):
+         $(".icon").html("<img src="http://openweathermap.org/img/w/01d.png">");
+         break;
+       case setRange(weatherId,700,799):
+         $(".icon").html("<img src= "http://openweathermap.org/img/w/50d.png">");
+         break;
+       case setRange(weatherId,600,699):
+         $(".icon").html("<img src="http://openweathermap.org/img/w/13d.png">");
+         break;
+        } 
+
+
+
+
 
 //Make a new function to change temp to celsius with its own button or same function just with celsius at the end of api call???
+
+
+
+/function FahrenheittoCelsius(temperature) {
+  
+
+//My API 26f4ad2459a59636d463a5c5535b46cf
+
+//really really good website  http://www.survivingwithandroid.com/2014/04/using-android-location-api-weather-app.html   http://tutorialzine.com/2012/05/weather-forecast-geolocation-jquery/    http://codepen.io/Mokubao/pen/JRdpXq?editors=0010
+
+
+
+
+
+
+
+
+
 
 
 
