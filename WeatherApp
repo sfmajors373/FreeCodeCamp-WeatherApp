@@ -1,0 +1,77 @@
+//and everything must start somewhere...
+function geoFindMe() {
+  var output = document.getElementById("out");
+
+//failpoint 1
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+//getting georeferences
+  function success(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+
+//api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}
+
+//I need some way to call the api for it to give me the json
+var data = new weatherData ();
+data.src = "api.openweathermap.org/data/2.5/weather?lat={" +lat+ "}&lon={"+lon+ "}=imperial";
+
+//display all pertinent info in well somehow (use city name, country code)
+
+//find out how to change display based on weather, use weather.id 
+
+//end this function at some point in time...
+
+//Make a new function to change temp to celsius with its own button or same function just with celsius at the end of api call???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+so let'S say your twitter button has the ID 'tweet'
+then simply include in your getQuote function
+$('#tweet').attr('href', 'https://twitter.com/intent/tweet?text=' + $('#quote').text());
+obviously only works, if your quote is in an element with the id 'quote'
